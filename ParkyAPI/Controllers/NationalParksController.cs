@@ -36,7 +36,7 @@ namespace ParkyAPI.Controllers
 
             return Ok(objDto);
         }
-        [HttpGet("{nationalParkId:int}")]
+        [HttpGet("{nationalParkId:int}", Name = "GetNationalPark")]
         public IActionResult GetNationalPark(int nationalParkId)
         {
             var obj = _unitOfWork.NationalParkRepository.GetById(nationalParkId);
@@ -67,7 +67,7 @@ namespace ParkyAPI.Controllers
                 ModelState.AddModelError("",$"Something went wrong saving the record {model.Name}");
                 return StatusCode(500, ModelState);
             }
-            return Ok();
+            return CreatedAtRoute("GetNationalPark", new { nationalParkId = model.Id }, model);
         }
     }
 }
