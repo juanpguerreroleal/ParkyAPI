@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ParkyAPI.DataAccess.Repository.IRepository;
 using ParkyAPI.DataAccess.Repository;
+using ParkyAPI.Mapper;
 
 namespace ParkyAPI
 {
@@ -36,6 +37,7 @@ namespace ParkyAPI
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddAutoMapper(typeof(ParkyMappings));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ParkyAPI", Version = "v1" });
