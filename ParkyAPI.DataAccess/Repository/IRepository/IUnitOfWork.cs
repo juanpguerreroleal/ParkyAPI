@@ -9,6 +9,6 @@ namespace ParkyAPI.DataAccess.Repository.IRepository
     public interface IUnitOfWork: IDisposable
     {
         INationalParkRepository NationalParkRepository { get; }
-        void SaveChanges();
+        bool SaveChanges();
     }
 }

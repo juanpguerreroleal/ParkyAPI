@@ -21,9 +21,9 @@ namespace ParkyAPI.DataAccess.Repository
             _db.Dispose();
         }
 
-        public void SaveChanges()
+        public bool SaveChanges()
         {
-            _db.SaveChanges();
+            return _db.SaveChanges() > 0;
         }
     }
 }
