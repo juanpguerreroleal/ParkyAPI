@@ -64,10 +64,26 @@ namespace ParkyAPI.Controllers
             _unitOfWork.NationalParkRepository.Add(model);
             if (!_unitOfWork.SaveChanges())
             {
-                ModelState.AddModelError("",$"Something went wrong saving the record {model.Name}");
+                ModelState.AddModelError("", $"Something went wrong saving the record {model.Name}");
                 return StatusCode(500, ModelState);
             }
             return CreatedAtRoute("GetNationalPark", new { nationalParkId = model.Id }, model);
+        }
+        [HttpPatch("{nationalParkId:int}", Name ="UpdateNationalPark")]
+        public IActionResult UpdateNationalPark(int nationalParkId, [FromBody] NationalParkDto nationalParkDto)
+        {
+            if (nationalParkDto == null || nationalParkId != nationalParkDto.Id)
+            {
+                return BadRequest(ModelState);
+            }
+            var model = _mapper.Map<NationalPark>(nationalParkDto);
+            _unitOfWork.NationalParkRepository.Update(model);
+            if (!_unitOfWork.SaveChanges())
+            {
+                ModelState.AddModelError("", $"Something went wrong updating the record {model.Name}");
+                return StatusCode(500, ModelState);
+            }
+            return NoContent();
         }
     }
 }
