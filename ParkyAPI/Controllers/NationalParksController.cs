@@ -35,5 +35,16 @@ namespace ParkyAPI.Controllers
 
             return Ok(objDto);
         }
+        [HttpGet("{nationalParkId:int}")]
+        public IActionResult GetNationalPark(int nationalParkId)
+        {
+            var obj = _unitOfWork.NationalParkRepository.GetById(nationalParkId);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            var dto = _mapper.Map<NationalParkDto>(obj);
+            return Ok(dto);
+        }
     }
 }
