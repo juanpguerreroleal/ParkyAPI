@@ -16,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using ParkyAPI.DataAccess.Repository.IRepository;
 using ParkyAPI.DataAccess.Repository;
 using ParkyAPI.Mapper;
+using System.Reflection;
+using System.IO;
 
 namespace ParkyAPI
 {
@@ -41,6 +43,9 @@ namespace ParkyAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ParkyAPI", Version = "v1" });
+                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+                c.IncludeXmlComments(cmlCommentsFullPath);
             });
         }
 
@@ -51,7 +56,9 @@ namespace ParkyAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParkyAPI v1"));
+                app.UseSwaggerUI(c => {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParkyAPI v1");
+                });
             }
 
             app.UseHttpsRedirection();
