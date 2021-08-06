@@ -21,15 +21,27 @@ using System.IO;
 
 namespace ParkyAPI
 {
+    /// <summary>
+    /// Startup class
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Startup constructor
+        /// </summary>
+        /// <param name="configuration">Configuration model</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
+        /// <summary>
+        /// Startup configuration
+        /// </summary>
         public IConfiguration Configuration { get; }
-
+        /// <summary>
+        /// Services configuration method
+        /// </summary>
+        /// <param name="services">Container collection of services</param>
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -48,7 +60,11 @@ namespace ParkyAPI
                 c.IncludeXmlComments(cmlCommentsFullPath);
             });
         }
-
+        /// <summary>
+        /// Configure method
+        /// </summary>
+        /// <param name="app">Application</param>
+        /// <param name="env">Environment</param>
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

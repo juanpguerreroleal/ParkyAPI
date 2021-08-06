@@ -11,12 +11,20 @@ using System.Threading.Tasks;
 
 namespace ParkyAPI.Controllers
 {
+    /// <summary>
+    /// National Park controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class NationalParksController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="unitOfWork">Container of repositories</param>
+        /// <param name="mapper">Mapper entity</param>
         public NationalParksController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
@@ -57,6 +65,11 @@ namespace ParkyAPI.Controllers
             var dto = _mapper.Map<NationalParkDto>(obj);
             return Ok(dto);
         }
+        /// <summary>
+        /// Create national park
+        /// </summary>
+        /// <param name="nationalParkDto">The model of the national park to create</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult CreateNationalPark([FromBody] NationalParkDto nationalParkDto)
         {
@@ -79,6 +92,12 @@ namespace ParkyAPI.Controllers
             }
             return CreatedAtRoute("GetNationalPark", new { nationalParkId = model.Id }, model);
         }
+        /// <summary>
+        /// Update national park
+        /// </summary>
+        /// <param name="nationalParkId">The id of the national park to update</param>
+        /// <param name="nationalParkDto">The updated model of the national park</param>
+        /// <returns></returns>
         [HttpPatch("{nationalParkId:int}", Name ="UpdateNationalPark")]
         public IActionResult UpdateNationalPark(int nationalParkId, [FromBody] NationalParkDto nationalParkDto)
         {
@@ -95,6 +114,11 @@ namespace ParkyAPI.Controllers
             }
             return NoContent();
         }
+        /// <summary>
+        /// Delete national park
+        /// </summary>
+        /// <param name="nationalParkId">The id of the national park to delete</param>
+        /// <returns></returns>
         [HttpDelete("{nationalParkId:int}", Name = "DeleteNationalPark")]
         public IActionResult DeleteNationalPark(int nationalParkId)
         {
