@@ -32,7 +32,8 @@ namespace ParkyAPI.DataAccess.Repository
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor() {
                 Subject = new System.Security.Claims.ClaimsIdentity(new Claim[] {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),
                 Expires =  DateTime.UtcNow.AddDays(7),
                 SigningCredentials =  new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -53,7 +54,8 @@ namespace ParkyAPI.DataAccess.Repository
         {
             User user = new User() {
                 Username = username,
-                Password = password
+                Password = password, 
+                Role = "Admin"
             };
             _db.Users.Add(user);
             _db.SaveChanges();
