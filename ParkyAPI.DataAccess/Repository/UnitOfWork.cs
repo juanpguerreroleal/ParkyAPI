@@ -12,11 +12,13 @@ namespace ParkyAPI.DataAccess.Repository
         public ApplicationDbContext _db;
         public INationalParkRepository NationalParkRepository { get; set; }
         public ITrailRepository TrailRepository { get; set; }
+        public IUserRepository UserRepository { get; set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             NationalParkRepository = new NationalParkRepository(_db);
             TrailRepository = new TrailRepository(_db);
+            UserRepository = new UserRepository(_db);
         }
         public void Dispose()
         {

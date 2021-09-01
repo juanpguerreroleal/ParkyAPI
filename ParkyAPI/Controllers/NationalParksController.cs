@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ParkyAPI.DataAccess.Repository.IRepository;
@@ -19,6 +20,7 @@ namespace ParkyAPI.Controllers
     [ApiController]
     //[ApiExplorerSettings(GroupName = "NPv1")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [Authorize]
     public class NationalParksController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;

@@ -10,6 +10,7 @@ namespace ParkyAPI.DataAccess.Repository.IRepository
     {
         INationalParkRepository NationalParkRepository { get; }
         ITrailRepository TrailRepository { get; }
+        IUserRepository UserRepository { get; }
         bool SaveChanges();
     }
 }
