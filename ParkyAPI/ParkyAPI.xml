@@ -4,6 +4,18 @@
         <name>ParkyAPI</name>
     </assembly>
     <members>
+        <member name="T:ParkyAPI.Controllers.NationalParksController">
+            <summary>
+            National Park controller
+            </summary>
+        </member>
+        <member name="M:ParkyAPI.Controllers.NationalParksController.#ctor(ParkyAPI.DataAccess.Repository.IRepository.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="unitOfWork">Container of repositories</param>
+            <param name="mapper">Mapper entity</param>
+        </member>
         <member name="M:ParkyAPI.Controllers.NationalParksController.GetNationalParks">
             <summary>
             Get list of all the national parks
@@ -16,6 +28,57 @@
             </summary>
             <param name="nationalParkId">The id of the national park</param>
             <returns></returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.NationalParksController.CreateNationalPark(ParkyAPI.Models.Dtos.NationalParkDto)">
+            <summary>
+            Create national park
+            </summary>
+            <param name="nationalParkDto">The model of the national park to create</param>
+            <returns></returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.NationalParksController.UpdateNationalPark(System.Int32,ParkyAPI.Models.Dtos.NationalParkDto)">
+            <summary>
+            Update national park
+            </summary>
+            <param name="nationalParkId">The id of the national park to update</param>
+            <param name="nationalParkDto">The updated model of the national park</param>
+            <returns></returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.NationalParksController.DeleteNationalPark(System.Int32)">
+            <summary>
+            Delete national park
+            </summary>
+            <param name="nationalParkId">The id of the national park to delete</param>
+            <returns></returns>
+        </member>
+        <member name="T:ParkyAPI.Startup">
+            <summary>
+            Startup class
+            </summary>
+        </member>
+        <member name="M:ParkyAPI.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Startup constructor
+            </summary>
+            <param name="configuration">Configuration model</param>
+        </member>
+        <member name="P:ParkyAPI.Startup.Configuration">
+            <summary>
+            Startup configuration
+            </summary>
+        </member>
+        <member name="M:ParkyAPI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Services configuration method
+            </summary>
+            <param name="services">Container collection of services</param>
+        </member>
+        <member name="M:ParkyAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configure method
+            </summary>
+            <param name="app">Application</param>
+            <param name="env">Environment</param>
         </member>
     </members>
 </doc>
