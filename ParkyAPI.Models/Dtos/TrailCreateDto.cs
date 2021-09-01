@@ -8,9 +8,8 @@ using static ParkyAPI.Models.Dtos.TrailDto;
 
 namespace ParkyAPI.Models.Dtos
 {
-    public class TrailUpsertDto
+    public class TrailCreateDto
     {
-        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
