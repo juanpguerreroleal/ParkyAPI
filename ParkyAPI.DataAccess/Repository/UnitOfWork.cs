@@ -1,4 +1,5 @@
-﻿using ParkyAPI.DataAccess.Repository.IRepository;
+﻿using Microsoft.Extensions.Options;
+using ParkyAPI.DataAccess.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,12 @@ namespace ParkyAPI.DataAccess.Repository
         public INationalParkRepository NationalParkRepository { get; set; }
         public ITrailRepository TrailRepository { get; set; }
         public IUserRepository UserRepository { get; set; }
-        public UnitOfWork(ApplicationDbContext db)
+        public UnitOfWork(ApplicationDbContext db, IOptions<AppSettings> appSettings)
         {
             _db = db;
             NationalParkRepository = new NationalParkRepository(_db);
             TrailRepository = new TrailRepository(_db);
-            UserRepository = new UserRepository(_db);
+            UserRepository = new UserRepository(_db, appSettings);
         }
         public void Dispose()
         {

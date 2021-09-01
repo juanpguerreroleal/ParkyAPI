@@ -123,6 +123,13 @@
             <param name="trailId">The id of the trail to delete</param>
             <returns></returns>
         </member>
+        <member name="M:ParkyAPI.Controllers.UsersController.Authenticate(ParkyAPI.Models.User)">
+            <summary>
+            Authenticate user method
+            </summary>
+            <param name="model">The user model with username and password</param>
+            <returns></returns>
+        </member>
         <member name="T:ParkyAPI.Startup">
             <summary>
             Startup class
