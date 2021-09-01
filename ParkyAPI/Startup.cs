@@ -54,7 +54,8 @@ namespace ParkyAPI
             services.AddAutoMapper(typeof(ParkyMappings));
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ParkyAPI", Version = "v1" });
+                c.SwaggerDoc("NPv1", new OpenApiInfo { Title = "ParkyAPI National Park", Version = "v1" });
+                c.SwaggerDoc("Trailsv1", new OpenApiInfo { Title = "ParkyAPI Trails", Version = "v1" });
                 var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
                 c.IncludeXmlComments(cmlCommentsFullPath);
@@ -73,7 +74,8 @@ namespace ParkyAPI
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParkyAPI v1");
+                    c.SwaggerEndpoint("/swagger/NPv1/swagger.json", "ParkyAPI NP v1");
+                    c.SwaggerEndpoint("/swagger/Trailsv1/swagger.json", "ParkyAPI Trails v1");
                 });
             }
 

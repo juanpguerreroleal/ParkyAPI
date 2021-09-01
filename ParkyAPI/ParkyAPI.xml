@@ -76,14 +76,14 @@
             <param name="trailId">The id of the trail</param>
             <returns></returns>
         </member>
-        <member name="M:ParkyAPI.Controllers.TrailsController.CreateTrail(ParkyAPI.Models.Dtos.TrailUpsertDto)">
+        <member name="M:ParkyAPI.Controllers.TrailsController.CreateTrail(ParkyAPI.Models.Dtos.TrailCreateDto)">
             <summary>
             Create trail
             </summary>
             <param name="trailDto">The model of the trail to create</param>
             <returns></returns>
         </member>
-        <member name="M:ParkyAPI.Controllers.TrailsController.UpdateTrail(System.Int32,ParkyAPI.Models.Dtos.TrailUpsertDto)">
+        <member name="M:ParkyAPI.Controllers.TrailsController.UpdateTrail(System.Int32,ParkyAPI.Models.Dtos.TrailUpdateDto)">
             <summary>
             Update trail
             </summary>
