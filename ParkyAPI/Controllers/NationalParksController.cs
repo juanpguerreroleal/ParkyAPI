@@ -101,7 +101,8 @@ namespace ParkyAPI.Controllers
                 ModelState.AddModelError("", $"Something went wrong saving the record {model.Name}");
                 return StatusCode(500, ModelState);
             }
-            return CreatedAtRoute("GetNationalPark", new { nationalParkId = model.Id }, model);
+            return CreatedAtRoute("GetNationalPark", new { version = HttpContext.GetRequestedApiVersion().ToString(),
+                nationalParkId = model.Id }, model);
         }
         /// <summary>
         /// Update national park

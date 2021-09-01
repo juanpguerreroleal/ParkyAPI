@@ -73,6 +73,31 @@ namespace ParkyAPI.Controllers
             return Ok(dto);
         }
         /// <summary>
+        /// Get individual trail
+        /// </summary>
+        /// <param name="trailId">The id of the trail</param>
+        /// <returns></returns>
+        [HttpGet("[action]/{nationalParkId:int}")]
+        [ProducesResponseType(200, Type = typeof(TrailDto))]
+        [ProducesResponseType(404)]
+        [ProducesDefaultResponseType]
+        public IActionResult GetTrailInNationalPark(int nationalParkId)
+        {
+            var objList = _unitOfWork.TrailRepository.GetAll(x => x.NationalParkId == nationalParkId);
+            if (objList == null)
+            {
+                return NotFound();
+            }
+            var objDto = new List<TrailDto>();
+            foreach (var obj in objList)
+            {
+                var dto = _mapper.Map<TrailDto>(obj);
+                objDto.Add(dto);
+            }
+            return Ok(objDto);
+        }
+
+        /// <summary>
         /// Create trail
         /// </summary>
         /// <param name="trailDto">The model of the trail to create</param>

@@ -94,6 +94,13 @@
             <param name="trailId">The id of the trail</param>
             <returns></returns>
         </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.GetTrailInNationalPark(System.Int32)">
+            <summary>
+            Get individual trail
+            </summary>
+            <param name="trailId">The id of the trail</param>
+            <returns></returns>
+        </member>
         <member name="M:ParkyAPI.Controllers.TrailsController.CreateTrail(ParkyAPI.Models.Dtos.TrailCreateDto)">
             <summary>
             Create trail
