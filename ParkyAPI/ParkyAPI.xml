@@ -51,6 +51,24 @@
             <param name="nationalParkId">The id of the national park to delete</param>
             <returns></returns>
         </member>
+        <member name="T:ParkyAPI.Controllers.NationalParksV2Controller">
+            <summary>
+            National Park controller
+            </summary>
+        </member>
+        <member name="M:ParkyAPI.Controllers.NationalParksV2Controller.#ctor(ParkyAPI.DataAccess.Repository.IRepository.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="unitOfWork">Container of repositories</param>
+            <param name="mapper">Mapper entity</param>
+        </member>
+        <member name="M:ParkyAPI.Controllers.NationalParksV2Controller.GetNationalParks">
+            <summary>
+            Get list of all the national parks
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ParkyAPI.Controllers.TrailsController">
             <summary>
             Trail controller
@@ -120,7 +138,7 @@
             </summary>
             <param name="services">Container collection of services</param>
         </member>
-        <member name="M:ParkyAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:ParkyAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
             <summary>
             Configure method
             </summary>
