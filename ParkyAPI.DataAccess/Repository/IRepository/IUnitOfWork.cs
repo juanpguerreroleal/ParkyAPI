@@ -9,6 +9,7 @@ namespace ParkyAPI.DataAccess.Repository.IRepository
     public interface IUnitOfWork: IDisposable
     {
         INationalParkRepository NationalParkRepository { get; }
+        ITrailRepository TrailRepository { get; }
         bool SaveChanges();
     }
 }
